@@ -1,6 +1,7 @@
 require "rubygems"
 require "sinatra"
 require "rest_client"
+require "uri"
 
 get "/" do
   html = '<html><head><link type="text/css" rel="stylesheet" href="/style.css" media="screen" /></head>'
@@ -39,7 +40,7 @@ end
 
 post "/" do
   
-  RestClient.get 'http://api.tropo.com/1.0/sessions?action=create&token=0a061c943b623546886b62f124d0f329a71beea4135c0e8f0b55bc61e33ffa211ce1301a15a58c37781f5715&number=1' + params[:areacode] + params[:num1] + params[:num2] + '&name=' + params[:recipient]
+  RestClient.get 'http://api.tropo.com/1.0/sessions?action=create&token=0a061c943b623546886b62f124d0f329a71beea4135c0e8f0b55bc61e33ffa211ce1301a15a58c37781f5715&number=1' + params[:areacode] + params[:num1] + params[:num2] + '&name=' + URI.escape(params[:recipient])
   
   html = '<html><head><link type="text/css" rel="stylesheet" href="/style.css" media="screen" /></head>'
   html <<  '<body>'
