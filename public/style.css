@@ -4,9 +4,9 @@ input,button,textarea,select,optgroup,option { font-family: inherit; font-size: 
 input,button,textarea,select { *font-size: 100%; }
 
 html { background: url(/backgroundshort.jpg) no-repeat 0 -54px; background-color: #004;}
-body { font-family: Helvetica, Arial, sans-serif; color: #ffffff; }
+body { font-family: Helvetica, Arial, sans-serif; color: #ffffff; font-size: 16px;  }
 
-form #input-wrap { padding: 250px 400px 20px 404px; }
+form #input-wrap { padding: 200px 400px 20px 404px; }
 form em { font-size: 2em; font-weight: 900; display: inline;margin-left: -5px; }
 form input { background: rgba(255,255,255,0.3) no-repeat 0 -54px; border: 0; padding: 8px 10px; font-size: 20px; font-weight: bold; letter-spacing: 0.1em; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; color: #ffffff; }
 form input#countryCode { width: 75px; background-position: -116px -54px; text-align: center; margin: 10px auto; padding: 8px 5px;}

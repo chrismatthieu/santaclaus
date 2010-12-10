@@ -51,6 +51,7 @@ get "/" do
   html << '<body><div id="getdata"><form> 
   				<table width="400" border="0"><tr><td><div id="input-wrap">
   				<center><h1>SantaCall.Us</h1><br/>
+  				Enter the phone number and name of the person that you would like for Santa to call. If you enter your email address, he\'ll send you their Christmas wish!<br/><br/>
 					<em>(</em> 
   					<fieldset> 
   						<input type="text" id="areacode" name="areacode" class="text" maxlength="3" tabindex="1" /> 
