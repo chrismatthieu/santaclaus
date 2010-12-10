@@ -66,6 +66,10 @@ get "/" do
   					<fieldset> 
               <input type="text" id="recipient" name="recipient" value="Recipient\'s Name" tabindex="4" class="clearMeFocus" title="Recipient\'s Name"/> 
   					</fieldset> 
+  					<fieldset> 
+              <input type="text" id="emailto" name="emailto" value="Your email address" tabindex="5" class="clearMeFocus" title="Your email address"/> 
+  					</fieldset> 
+
   				</div>
   				<fieldset> 
   					<input type="button" value="Call" id="submit" tabindex="5" /> 
@@ -77,14 +81,14 @@ get "/" do
           $("#getdata").hide();
           $("#calling").show();
           
-          $.ajax({ url: \'/\', data: { \'areacode\': $(\'#areacode\').val(), \'num1\': $(\'#num1\').val(), \'num2\': $(\'#num2\').val(), \'recipient\': $(\'#recipient\').val()}, type: \'post\' });
+          $.ajax({ url: \'/\', data: { \'areacode\': $(\'#areacode\').val(), \'num1\': $(\'#num1\').val(), \'num2\': $(\'#num2\').val(), \'recipient\': $(\'#recipient\').val(), \'emailto\': $(\'#emailto\').val()}, type: \'post\' });
           
           });
 
         </script>
         
   			</div>
-  			<div id="calling" style="display:none"><div id="call-wrap"><h1>Santa is calling you now!</h1><br/><p><form><input type="button" id="again" value="again?" /></form></p></div>
+  			<div id="calling" style="display:none"><div id="call-wrap"><h1>Santa is calling now!</h1><br/><p><form><input type="button" id="again" value="again?" /></form></p><br/><br/><br/><br/></div>
   			<script>
 
           $("#again").click(function() {
@@ -108,6 +112,21 @@ end
 
 post "/" do
     # Place call using Tropo's Scripting API
-    RestClient.get 'http://api.tropo.com/1.0/sessions?action=create&token=0a061c943b623546886b62f124d0f329a71beea4135c0e8f0b55bc61e33ffa211ce1301a15a58c37781f5715&number=1' + params[:areacode] + params[:num1] + params[:num2] + '&name=' + URI.escape(params[:recipient])
+    RestClient.get 'http://api.tropo.com/1.0/sessions?action=create&token=0a061c943b623546886b62f124d0f329a71beea4135c0e8f0b55bc61e33ffa211ce1301a15a58c37781f5715&number=1' + params[:areacode] + params[:num1] + params[:num2] + '&name=' + URI.escape(params[:recipient]) + '&emailto=' + params[:emailto]
     
+end
+
+post "/transcribe" do
+  require 'json'
+  require 'pony'
+  
+  transcript_json = JSON.parse(request.body.read)
+  identifier = transcript_json['result']['identifier']
+  transcript = transcript_json['result']['transcription']
+
+  Pony.mail :to => identifier,
+              :from => "thebigguy@santacall.us",
+              :subject => "Christmas Wishes!",
+              :body => "A special person just asked Santa for the following wish: " + transcript
+                
 end
