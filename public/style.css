@@ -3,10 +3,10 @@ fieldset,img { border: 0; }
 input,button,textarea,select,optgroup,option { font-family: inherit; font-size: inherit; font-style: inherit; font-weight: inherit; }
 input,button,textarea,select { *font-size: 100%; }
 
-html { background: url(/background.jpg) no-repeat 0 -54px; background-color: #004;}
+html { background: url(/backgroundshort.jpg) no-repeat 0 -54px; background-color: #004;}
 body { font-family: Helvetica, Arial, sans-serif; color: #ffffff; }
 
-form #input-wrap { padding: 400px 400px 20px 404px; }
+form #input-wrap { padding: 250px 400px 20px 404px; }
 form em { font-size: 2em; font-weight: 900; display: inline;margin-left: -5px; }
 form input { background: rgba(255,255,255,0.3) no-repeat 0 -54px; border: 0; padding: 8px 10px; font-size: 20px; font-weight: bold; letter-spacing: 0.1em; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; color: #ffffff; }
 form input#countryCode { width: 75px; background-position: -116px -54px; text-align: center; margin: 10px auto; padding: 8px 5px;}
@@ -15,8 +15,8 @@ form input#countryCode { width: 75px; background-position: -116px -54px; text-al
 #country-field label{ display: block; }
 a#not-us { font-size: 0.8em; font-weight: normal; margin: 0 auto; width: 86px; display: block; margin-top: -90px;}
 form input#areacode { width: 65px; padding: 5px 10px 8px; }
-form input#firstthree { width:65px; background-position: -116px -54px; }
-form input#lastfour { width: 89px; background-position: -213px -54px; }
+form input#num1 { width:65px; background-position: -116px -54px; }
+form input#num2 { width: 89px; background-position: -213px -54px; }
 form input#submit { width: 100px; margin: 10px auto; display: block; }
 form label.error { font-size: 10px; color: #666; font-weight: 100; margin-top: 5px; line-height:1.4em; width: 82px; height: 50px; display: block; }
 form #input-wrap fieldset { display: inline; margin: 0 6px; height: 50px; }
@@ -24,7 +24,7 @@ form #input-wrap fieldset { display: inline; margin: 0 6px; height: 50px; }
 p { text-align: center; font-size: 10px; margin: 10px 0; clear: both;}
 a { color: #999; font-weight: 900; }
 #tropo-donate { clear: both; padding-top: 15px; width: 355px; margin: 0 auto; }
-#tropo { width: 350px; float: left; color: #000; margin-top: 150px;}
+#tropo { width: 150px; float: left; color: #000; margin-top: 150px;}
 #tropo-logo { margin: 0 auto; width: 150px; display: block; margin-top: -10px; }
 
-#call-wrap { padding: 550px 400px 20px 504px; }
+#call-wrap { padding: 350px 200px 20px 504px; }
