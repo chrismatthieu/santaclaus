@@ -120,13 +120,23 @@ post "/transcribe" do
   require 'json'
   require 'pony'
   
+  TPMI_SMTP_OPTIONS = {
+      :address        => "smtp.sendgrid.net",
+      :port           => "25",
+      :authentication => :plain,
+      :user_name      => ENV['SENDGRID_USERNAME'],
+      :password       => ENV['SENDGRID_PASSWORD'],
+      :domain         => ENV['SENDGRID_DOMAIN'],
+  }
+  
   transcript_json = JSON.parse(request.body.read)
   identifier = transcript_json['result']['identifier']
   transcript = transcript_json['result']['transcription']
 
   Pony.mail :to => identifier,
-              :from => "thebigguy@santacall.us",
+              :from => "BigGuy@SantaCall.us",
               :subject => "Christmas Wishes!",
-              :body => "A special person just asked Santa for the following wish: " + transcript
+              :body => "A special person just asked Santa for the following wish: " + transcript,
+              :via => :smtp, :via_options => TPMI_SMTP_OPTIONS)
                 
 end
