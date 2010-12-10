@@ -133,7 +133,7 @@ post "/transcribe" do
   identifier = transcript_json['result']['identifier']
   transcript = transcript_json['result']['transcription']
 
-  Pony.mail :to => identifier,
+  Pony.mail(:to => identifier,
               :from => "BigGuy@SantaCall.us",
               :subject => "Christmas Wishes!",
               :body => "A special person just asked Santa for the following wish: " + transcript,
