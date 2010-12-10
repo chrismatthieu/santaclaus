@@ -113,7 +113,19 @@ end
 
 post "/" do
     # Place call using Tropo's Scripting API
-    RestClient.get 'http://api.tropo.com/1.0/sessions?action=create&token=0a061c943b623546886b62f124d0f329a71beea4135c0e8f0b55bc61e33ffa211ce1301a15a58c37781f5715&number=1' + params[:areacode] + params[:num1] + params[:num2] + '&name=' + URI.escape(params[:recipient].to_s) + '&emailto=' + params[:emailto].to_s
+    
+    if params[:recipient] == "Recipient's Name"
+      recipient = ""
+    else 
+      recipient = params[:recipient]
+    end
+    if params[:emailto] == "Your email address"
+      emailto = ""
+    else 
+      emailto = params[:emailto]
+    end
+    
+    RestClient.get 'http://api.tropo.com/1.0/sessions?action=create&token=0a061c943b623546886b62f124d0f329a71beea4135c0e8f0b55bc61e33ffa211ce1301a15a58c37781f5715&number=1' + params[:areacode] + params[:num1] + params[:num2] + '&name=' + URI.escape(recipient) + '&emailto=' + URI.escape(emailto)
     
 end
 
@@ -133,11 +145,13 @@ post "/transcribe" do
   transcript_json = JSON.parse(request.body.read)
   identifier = transcript_json['result']['identifier']
   transcript = transcript_json['result']['transcription']
+  
+  maildata = identifier.split(":")
 
-  Pony.mail(:to => identifier,
+  Pony.mail(:to => maildata[0],
               :from => "BigGuy@SantaCall.us",
               :subject => "Christmas Wishes!",
-              :body => "A special person just asked Santa for the following wish: " + transcript,
+              :body => maildata[1].capitalize + " just asked Santa for the following wish: " + transcript,
               :via => :smtp, :via_options => TPMI_SMTP_OPTIONS)
                 
 end
