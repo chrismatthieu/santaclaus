@@ -80,10 +80,21 @@ get "/" do
           $.ajax({ url: \'/\', data: { \'areacode\': $(\'#areacode\').val(), \'num1\': $(\'#num1\').val(), \'num2\': $(\'#num2\').val(), \'recipient\': $(\'#recipient\').val()}, type: \'post\' });
           
           });
+
         </script>
         
   			</div>
-  			<div id="calling" style="display:none"><div id="call-wrap"><h1>Santa is calling you now!</h1><br/><p><form><a href="/"><input type="button" value="again?" /></a></form></p></div></div>
+  			<div id="calling" style="display:none"><div id="call-wrap"><h1>Santa is calling you now!</h1><br/><p><form><input type="button" id="again" value="again?" /></form></p></div>
+  			<script>
+
+          $("#again").click(function() {
+            $("#getdata").show();
+            $("#calling").hide();          
+          });
+
+        </script>
+  			
+  			</div>
   			
   			<div id="tropo-donate" class="clearfix"> 
         		<div id="tropo"> 
