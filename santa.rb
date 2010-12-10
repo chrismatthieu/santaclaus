@@ -5,8 +5,7 @@ require "uri"
 
 get "/" do
   html = '<html><head><link type="text/css" rel="stylesheet" href="/style.css" media="screen" /></head>'
-  html <<  '<body>'
-  html << '<form id="call" method="post" action="/"> 
+  html << '<body><form id="call" method="post" action="/"> 
   				<div id="input-wrap"> <center><h1>Santa Calling</h1></center><br/>
 					<em>(</em> 
   					<fieldset> 
@@ -40,12 +39,10 @@ end
 
 post "/" do
   
-  RestClient.get 'http://api.tropo.com/1.0/sessions?action=create&token=0a061c943b623546886b62f124d0f329a71beea4135c0e8f0b55bc61e33ffa211ce1301a15a58c37781f5715&number=1' + params[:areacode] + params[:num1] + params[:num2] + '&name=' + URI.escape(params[:recipient])
+    RestClient.get 'http://api.tropo.com/1.0/sessions?action=create&token=0a061c943b623546886b62f124d0f329a71beea4135c0e8f0b55bc61e33ffa211ce1301a15a58c37781f5715&number=1' + params[:areacode] + params[:num1] + params[:num2] + '&name=' + URI.escape(params[:recipient])
   
   html = '<html><head><link type="text/css" rel="stylesheet" href="/style.css" media="screen" /></head>'
-  html <<  '<body>'
-  html << '<div id="call-wrap">Calling...</div>
-  			
+  html << '<body><div id="call-wrap">Calling...</div>
   			<div id="tropo-donate" class="clearfix"> 
         		<div id="tropo"> 
         			<p>Voice API provided by <a href="http://tropo.com/">Tropo</a></p> 
