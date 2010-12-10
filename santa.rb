@@ -10,26 +10,47 @@ get "/" do
           <script language="javascript">'
   html << "$(document).ready(function() {
 
-          		var clearMePrevious = '';
+          		var clearMePrevious1 = '';
+          		var clearMePrevious2 = '';
 
           		// clear input on focus
-          		$('.clearMeFocus').focus(function()
+          		$('.clearMeFocus1').focus(function()
           		{
           		if($(this).val()==$(this).attr('title'))
           		{
-          		clearMePrevious = $(this).val();
+          		clearMePrevious1 = $(this).val();
           		$(this).val('');
           		}
           		});
 
           		// if field is empty afterward, add text again
-          		$('.clearMeFocus').blur(function()
+          		$('.clearMeFocus1').blur(function()
           		{
           		if($(this).val()=='')
           		{
-          		$(this).val(clearMePrevious);
+          		$(this).val(clearMePrevious1);
           		}
           		});
+
+          		// clear input on focus
+          		$('.clearMeFocus2').focus(function()
+          		{
+          		if($(this).val()==$(this).attr('title'))
+          		{
+          		clearMePrevious2 = $(this).val();
+          		$(this).val('');
+          		}
+          		});
+
+          		// if field is empty afterward, add text again
+          		$('.clearMeFocus2').blur(function()
+          		{
+          		if($(this).val()=='')
+          		{
+          		$(this).val(clearMePrevious2);
+          		}
+          		});
+
               $('#areacode, #num1, #num2').autotab_magic().autotab_filter('numeric');
 
               });
@@ -65,10 +86,10 @@ get "/" do
               <input type="text" id="num2" name="num2" class="text" maxlength="4" tabindex="3" /> 
   					</fieldset> 
   					<fieldset> 
-              <input type="text" id="recipient" name="recipient" value="Recipient\'s Name" tabindex="4" class="clearMeFocus" title="Recipient\'s Name"/> 
+              <input type="text" id="recipient" name="recipient" value="Recipient\'s Name" tabindex="4" class="clearMeFocus1" title="Recipient\'s Name"/> 
   					</fieldset> 
   					<fieldset> 
-              <input type="text" id="emailto" name="emailto" value="Your email address" tabindex="5" class="clearMeFocus" title="Your email address"/> 
+              <input type="text" id="emailto" name="emailto" value="Your email address" tabindex="5" class="clearMeFocus2" title="Your email address"/> 
   					</fieldset> 
 
   				</div>
